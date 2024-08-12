@@ -1,0 +1,91 @@
+ls:list directories
+cd..:back to directory
+cd Desktop
+mkdir:Create new directory(folder)
+rmdir:Remove an empty directory
+rm:REmoves(deletes) files and directories.
+cd:Change the current directory.Allows you to navigate th file system
+cat:to create file
+cat>file1.txt:create file.After press ctrl+z/c to stop/save.
+Todisplay contets in file use:cat file1.txt
+find *.txt:Find for all files with.txt
+ grep Rosette file.txt:Search and select string "Rosette" in file.txt
+ gedit file.txt:Edits File contents
+rpm -qa:List all packages installed
+sudo zypper install vim:install vim text editor using Zypper tool
+sudo apt-get in nano:install nano text editor using Apt tool
+sudo yast -i kate:install Kate text editor using Yast tool
+sudo zypper dup nano:Upgrade nano.
+sudo zypper up nano:Update nano using zipper
+sudo systemctl start sshd:Starts service
+sudo zypper rm[remove] nano:Uninstall nano
+nano file.txt:Starts nano with file'file.txt'
+rpm -q nano:Check if nano is installed (SUSE/Red Hat/CentOS).
+service <service-name> status:Check the status of the services.Ex:service ssh status.
+systemctl status ssh:Checks if service is running/Active
+systemctl is-active <service-name>:Check if active/stopped.
+sudo grouadd developers:Creates group developers
+getent group:List all users
+cat /etc/passwd:List all users
+cat /etc/group:List all groups
+id john:Show user id
+sudo userdel john:Delete user John
+sudo groupdel two:Delete group two
+sudo passwd rose:Create password to user rose
+su rose:Switchs user to rose
+sudo usermod -aG Developers Rosette:Adds user Rosette to group Developers
+sudo useradd -G Developers Rosette:Adds user Rosette to group Developers directly.
+chmod u-w isma.txt:Remove write permission from owner
+chmod +x isma.txt:Give execute permission to isma.txt
+ls -ld:List permissions
+
+
+
+
+
+____________________EXERCISES_________________________
+
+1.create the groups SPORTS as primary group tennis ,swimming and football as secondary group 
+=>sudo groupadd SPORTS
+=>sudo groupadd tennis
+=>sudo groupadd Swimming
+=>sudo groupadd football
+
+2.in one command,make KEZA a member of tennis and swimming
+=>sudo useradd -G tennis,Swimming KEZA OR
+=>sudo usermod -g sport -G tennis,swimming keza(-g for primary group,-G for secondary group)
+3.Rename the football group to foot
+=>sudo groupmod -n foot football
+4.use vi to add kariza to the tennis group
+=>sudo vi /etc/group
+=>sudo useradd Kaliza
+=>sudo passwd
+5.use the id command to verify that kariza is a member of tennis
+=>id kaliza
+
+
+
+__________CONFIGURE NETWORK USING IFCONFIG______
+
+ismael@linux-e2n4:~> su -
+Password: 
+linux-e2n4:~ # yast2
+linux-e2n4:~ # ifconfig
+linux-e2n4:~ # cd /etc/sysconfig/network
+linux-e2n4:/etc/sysconfig/network # yast2=>Network settings=>Enable=>Edit
+linux-e2n4:/etc/sysconfig/network #  ifdown eth0
+linux-e2n4:/etc/sysconfig/network # ifup eth0
+
+________INSTALLATION OF DHCP_____
+zypper install dhcp:Install dhcp
+zypper install dhcp-server:Install DHCP Server
+zypper search installed dhcp:See if Dhcp installed
+zipper nano /etc/dhcpd.conf:Open file to edit
+Ctrl+o:Save
+dhcpd -t -cf etc/dhcpd.conf:Compile File to see if there is an error
+nano /etc/sysconfig/dhcpd:Open file for interface configuration
+nano /etc/sysconfig/network/ifcfg-eth0:Open file to edit interface
+systemctl start network:Starts network
+systemctl start dhcpd:Starts DHCP
+systemctl restart dhcpd:Restarts DHCPD
+systemctl status dhcpd.service:To check the status of dhcpd.service
